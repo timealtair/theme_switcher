@@ -1,4 +1,4 @@
-THEME SWITCHER for Windows
+# THEME SWITCHER for Windows
 
 switch black -> white / white -> black themes by starting the app
 
