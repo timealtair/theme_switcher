@@ -1,5 +1,7 @@
 # THEME SWITCHER for Windows
 
+![DEMO:](https://github.com/timealtair/theme_switcher/blob/main/demo.gif)
+
 switch black -> white / white -> black themes by starting the app
 
 works on win 10, 11, others not tested
