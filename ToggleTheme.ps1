@@ -49,7 +49,15 @@ function Toggle-Theme {
 
     $explorerStates = Save-ExplorerWindows
 
-    Stop-Process -Name explorer -Force
+$process = Get-Process | Where-Object { $_.ProcessName -like "*explorer*" }
+
+if ($process -ne $null) {
+    $processId = $process.Id
+    Stop-Process -Id $processId -Force
+} else {
+        $newProcess = Start-Process explorer.exe -PassThru
+}
+
     Reopen-ExplorerWindows -windowStates $explorerStates
 }
 
