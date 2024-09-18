@@ -27,8 +27,12 @@ function Reopen-ExplorerWindows {
     )
 
     if ($windowStates.Count -eq 0) {
-        $newProcess = Start-Process explorer.exe -PassThru
-        Stop-Process -Id $newProcess.Id -Force
+	$process = Get-Process | Where-Object { $_.ProcessName -like "*explorer*" }
+
+	if ($process -ne $null) {
+	} else {
+	    start explorer.exe
+	}
     } else {
         foreach ($state in $windowStates) {
             Start-Process explorer.exe $state.Path
@@ -55,7 +59,6 @@ if ($process -ne $null) {
     $processId = $process.Id
     Stop-Process -Id $processId -Force
 } else {
-        $newProcess = Start-Process explorer.exe -PassThru
 }
 
     Reopen-ExplorerWindows -windowStates $explorerStates
